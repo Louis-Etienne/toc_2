@@ -1,0 +1,15 @@
+{
+  "gameId": "12345",
+  "playerId": "player1",
+  "actionName": "Move Marble",
+    "parameters":[
+      {
+        "name": "Card",
+        "value": "5 Heart"
+      },
+      {
+        "name": "Marble",
+        "value": "5"
+      }
+    ]
+}
