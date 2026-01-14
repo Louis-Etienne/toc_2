@@ -10,9 +10,10 @@ public class ServerExtensionHelper {
     private static final String HEARTBEAT_PATH = "/api/heartbeat";
     private static final long SERVER_START_TIMEOUT = 30_000;
     private static Process process;
+    private static final String mvnCmd = System.getProperty("os.name").toLowerCase().contains("win") ? "mvn.cmd" : "mvn";
 
     public static void compileProject() throws Exception {
-        ProcessBuilder processBuilder = new ProcessBuilder("mvn", "compile");
+        ProcessBuilder processBuilder = new ProcessBuilder(mvnCmd, "compile");
         processBuilder.directory(new File(".."));
         processBuilder.inheritIO();
         Process process = processBuilder.start();
@@ -20,7 +21,7 @@ public class ServerExtensionHelper {
     }
 
     public static void startServer() throws Exception {
-        ProcessBuilder server = new ProcessBuilder("mvn", "exec:java", "-pl", "server", String.format("-Dport=%s", PORT));
+        ProcessBuilder server = new ProcessBuilder(mvnCmd, "exec:java", "-pl", "server", String.format("-Dport=%s", PORT));
         server.directory(new File(".."));
         server.inheritIO();
         process = server.start();
