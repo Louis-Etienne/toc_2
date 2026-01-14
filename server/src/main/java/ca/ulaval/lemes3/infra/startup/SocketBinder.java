@@ -14,6 +14,5 @@ public class SocketBinder extends AbstractBinder {
     @Override
     protected void configure() {
         bind(socketIoServer).to(SocketIoServer.class);
-
     }
 }

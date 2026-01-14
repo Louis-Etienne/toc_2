@@ -1,8 +1,7 @@
-package socket_io.web_rtc;
+package socket_io;
 
 import io.socket.client.IO;
 import io.socket.client.Socket;
-import io.socket.engineio.client.transports.Polling;
 import io.socket.engineio.client.transports.WebSocket;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(ServerExtension.class)
-public class WebRtcHandshakeIT {
+public class SocketConnectionIT {
 
     Socket socketHost;
 
