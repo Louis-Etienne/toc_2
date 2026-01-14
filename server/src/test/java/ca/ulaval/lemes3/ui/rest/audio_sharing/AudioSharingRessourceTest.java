@@ -34,14 +34,14 @@ class AudioSharingRessourceTest {
     }
 
     @Test
-    void given_whenCreateListener_thenResponseCreated(){
+    void given_whenCreateListener_thenResponseCreated() {
         Response response = audioSharingRessource.createListener();
 
         assertEquals(Response.Status.CREATED.getStatusCode(), response.getStatus());
     }
 
     @Test
-    void given_whenCreateListener_thenResponseBodyContainsListenerCreationResponse(){
+    void given_whenCreateListener_thenResponseBodyContainsListenerCreationResponse() {
         ListenerCreationResponse listenerCreationResponse = mock(ListenerCreationResponse.class);
         wireCreateListenerMock(listenerCreationResponse);
 
@@ -51,8 +51,8 @@ class AudioSharingRessourceTest {
     }
 
     @Test
-    void given_whenCreateParty_thenResponseCreated(){
-        ListenerRequest  listenerRequest = mock(ListenerRequest.class);
+    void given_whenCreateParty_thenResponseCreated() {
+        ListenerRequest listenerRequest = mock(ListenerRequest.class);
 
         Response response = audioSharingRessource.createParty(listenerRequest);
 
@@ -60,8 +60,8 @@ class AudioSharingRessourceTest {
     }
 
     @Test
-    void given_whenCreateParty_thenResponseBodyContainsPartyCreationInformation(){
-        ListenerRequest  listenerRequest = mock(ListenerRequest.class);
+    void given_whenCreateParty_thenResponseBodyContainsPartyCreationInformation() {
+        ListenerRequest listenerRequest = mock(ListenerRequest.class);
         PartyCreationResponse partyCreationResponse = mock(PartyCreationResponse.class);
         wireCreatePartyMock(listenerRequest, partyCreationResponse);
 
@@ -71,8 +71,8 @@ class AudioSharingRessourceTest {
     }
 
     @Test
-    void given_whenJoinParty_thenResponseOk(){
-        JoinPartyRequest  joinPartyRequest = mock(JoinPartyRequest.class);
+    void given_whenJoinParty_thenResponseOk() {
+        JoinPartyRequest joinPartyRequest = mock(JoinPartyRequest.class);
 
         Response response = audioSharingRessource.joinParty(joinPartyRequest);
 
@@ -80,8 +80,8 @@ class AudioSharingRessourceTest {
     }
 
     @Test
-    void given_whenJoinParty_thenResponseBodyContainsJoinPartyResponse(){
-        JoinPartyRequest  joinPartyRequest = mock(JoinPartyRequest.class);
+    void given_whenJoinParty_thenResponseBodyContainsJoinPartyResponse() {
+        JoinPartyRequest joinPartyRequest = mock(JoinPartyRequest.class);
         PartyCreationResponse partyCreationResponse = mock(PartyCreationResponse.class);
         wireJoinPartyMock(joinPartyRequest, partyCreationResponse);
 
@@ -90,13 +90,13 @@ class AudioSharingRessourceTest {
         assertEquals(partyCreationResponse, response.getEntity());
     }
 
-    private void wireCreateListenerMock(ListenerCreationResponse listenerCreationResponse){
+    private void wireCreateListenerMock(ListenerCreationResponse listenerCreationResponse) {
         ListenerId listenerId = mock(ListenerId.class);
         when(audioSharingService.createListener()).thenReturn(listenerId);
         when(partyAssembler.fromDomain(listenerId)).thenReturn(listenerCreationResponse);
     }
 
-    private void wireCreatePartyMock(ListenerRequest listenerRequest, PartyCreationResponse partyCreationResponse){
+    private void wireCreatePartyMock(ListenerRequest listenerRequest, PartyCreationResponse partyCreationResponse) {
         ListenerId listenerId = mock(ListenerId.class);
         PartyCreationInformations partyCreationInformations = mock(PartyCreationInformations.class);
         when(partyAssembler.toDomainListenerId(listenerRequest)).thenReturn(listenerId);
@@ -104,7 +104,7 @@ class AudioSharingRessourceTest {
         when(partyAssembler.fromDomain(partyCreationInformations)).thenReturn(partyCreationResponse);
     }
 
-    private void wireJoinPartyMock(JoinPartyRequest joinPartyRequest, PartyCreationResponse partyCreationResponse){
+    private void wireJoinPartyMock(JoinPartyRequest joinPartyRequest, PartyCreationResponse partyCreationResponse) {
         ListenerId listenerId = mock(ListenerId.class);
         PartyId partyId = mock(PartyId.class);
         PartyCreationInformations partyCreationInformations = mock(PartyCreationInformations.class);

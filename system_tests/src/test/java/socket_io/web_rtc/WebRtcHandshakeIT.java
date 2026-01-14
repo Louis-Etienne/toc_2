@@ -32,20 +32,16 @@ public class WebRtcHandshakeIT {
     CompletableFuture<Object[]> completableFuture;
 
     @BeforeEach
-    void setup(){
+    void setup() {
         serverUri = URI.create(ServerExtensionHelper.URL);
-        optionsHost = new IO.Options().builder()
-                .setPath("/socket.io")
-                .setTransports(new String[] { WebSocket.NAME })
-                .setQuery("listenerId=host")
-                .setForceNew(true)
+        optionsHost = new IO.Options().builder().setPath("/socket.io").setTransports(new String[]{WebSocket.NAME}).setQuery("listenerId=host").setForceNew(true)
                 .build();
         completableFuture = new CompletableFuture<>();
     }
 
     @AfterEach
-    void tearDown(){
-        if(socketHost != null){
+    void tearDown() {
+        if (socketHost != null) {
             socketHost.close();
         }
     }

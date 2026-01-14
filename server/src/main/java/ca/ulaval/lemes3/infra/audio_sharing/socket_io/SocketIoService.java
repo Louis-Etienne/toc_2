@@ -18,7 +18,7 @@ public class SocketIoService implements SocketService {
 
     private SocketIoServer socketIoServer;
     private UserToSocketRepository userToSocketRepository;
-    private WebRTCConnectionHandler  connectionHandler;
+    private WebRTCConnectionHandler connectionHandler;
 
     @Inject
     public SocketIoService(SocketIoServer socketIoServer, UserToSocketRepository userToSocketRepository, WebRTCConnectionHandler connectionHandler) {
@@ -28,7 +28,7 @@ public class SocketIoService implements SocketService {
     }
 
     @PostConstruct
-    public void init(){
+    public void init() {
         SocketIoNamespace ns = socketIoServer.namespace("/");
 
         ns.on("connection", emitter -> {
@@ -38,7 +38,6 @@ public class SocketIoService implements SocketService {
             registerListeners(socket);
         });
     }
-
 
     @Override
     public void create(PartyId partyId, ListenerId listenerId) {

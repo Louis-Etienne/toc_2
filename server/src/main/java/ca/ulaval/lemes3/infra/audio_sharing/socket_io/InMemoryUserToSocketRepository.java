@@ -25,7 +25,7 @@ public class InMemoryUserToSocketRepository implements UserToSocketRepository {
 
     @Override
     public SocketIoSocket get(ListenerId listenerId) throws ListenerNotFoundException {
-        if(userToSocket.containsKey(listenerId)){
+        if (userToSocket.containsKey(listenerId)) {
             return userToSocket.get(listenerId);
 
         }
@@ -35,7 +35,7 @@ public class InMemoryUserToSocketRepository implements UserToSocketRepository {
 
     @Override
     public ListenerId get(SocketIoSocket socket) {
-        if(socketToUser.containsKey(socket.getId())) {
+        if (socketToUser.containsKey(socket.getId())) {
             return socketToUser.get(socket.getId());
         }
 

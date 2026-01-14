@@ -37,7 +37,7 @@ class InMemoryUserToSocketRepositoryTest {
     void givenSavedSocket_whenGetSocketWithId_thenReturnSocket() {
         userToSocketRepository.put(listenerId, socket);
 
-        SocketIoSocket result =  userToSocketRepository.get(listenerId);
+        SocketIoSocket result = userToSocketRepository.get(listenerId);
 
         assertEquals(socket, result);
     }
@@ -48,7 +48,7 @@ class InMemoryUserToSocketRepositoryTest {
     }
 
     @Test
-    void givenSavedSocket_whenGetIdWithSocket_thenReturnId(){
+    void givenSavedSocket_whenGetIdWithSocket_thenReturnId() {
         userToSocketRepository.put(listenerId, socket);
 
         ListenerId result = userToSocketRepository.get(socket);
@@ -62,7 +62,7 @@ class InMemoryUserToSocketRepositoryTest {
     }
 
     @Test
-    void givenSavedOffer_whenGetOfferWithId_thenReturnOffer(){
+    void givenSavedOffer_whenGetOfferWithId_thenReturnOffer() {
         userToSocketRepository.put(partyId, offer);
 
         Object[] result = userToSocketRepository.getOffer(partyId);
@@ -72,6 +72,6 @@ class InMemoryUserToSocketRepositoryTest {
 
     @Test
     void givenNothing_whenGetOfferWithId_thenThrowPartyNotFoundException() {
-        assertThrows(PartyNotFoundException.class, ()-> userToSocketRepository.getOffer(partyId));
+        assertThrows(PartyNotFoundException.class, () -> userToSocketRepository.getOffer(partyId));
     }
 }

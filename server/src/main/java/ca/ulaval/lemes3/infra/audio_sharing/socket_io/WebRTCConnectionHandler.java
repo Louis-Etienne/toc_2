@@ -19,8 +19,7 @@ public class WebRTCConnectionHandler {
     private PartyAssembler partyAssembler;
 
     @Inject
-    public WebRTCConnectionHandler(UserToSocketRepository userToSocketRepository, PartyRepository partyRepository,
-                                   PartyAssembler partyAssembler) {
+    public WebRTCConnectionHandler(UserToSocketRepository userToSocketRepository, PartyRepository partyRepository, PartyAssembler partyAssembler) {
         this.userToSocketRepository = userToSocketRepository;
         this.partyRepository = partyRepository;
         this.partyAssembler = partyAssembler;
@@ -34,7 +33,7 @@ public class WebRTCConnectionHandler {
         logger.info("socket :" + socket.getId() + " mapped with id : " + id);
     }
 
-    public void handleOffer(SocketIoSocket socket, Object[] objects){
+    public void handleOffer(SocketIoSocket socket, Object[] objects) {
         ListenerId listenerId = userToSocketRepository.get(socket);
 
         Party party = partyRepository.findPartyByListenerId(listenerId);
@@ -46,7 +45,7 @@ public class WebRTCConnectionHandler {
         logger.info("socket :" + socket.getId() + "  broadcast offer");
     }
 
-    public void handleAnswer(SocketIoSocket socket, Object[] objects){
+    public void handleAnswer(SocketIoSocket socket, Object[] objects) {
         ListenerId listenerId = userToSocketRepository.get(socket);
 
         Party party = partyRepository.findPartyByListenerId(listenerId);
@@ -56,7 +55,7 @@ public class WebRTCConnectionHandler {
         logger.info("socket :" + socket.getId() + " broadcast answer");
     }
 
-    public void handleIceCandidate(SocketIoSocket socket, Object[] objects){
+    public void handleIceCandidate(SocketIoSocket socket, Object[] objects) {
         ListenerId listenerId = userToSocketRepository.get(socket);
 
         Party party = partyRepository.findPartyByListenerId(listenerId);

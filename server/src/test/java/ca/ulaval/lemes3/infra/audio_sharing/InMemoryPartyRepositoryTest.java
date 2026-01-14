@@ -23,7 +23,6 @@ class InMemoryPartyRepositoryTest {
     @BeforeEach
     public void setUp() {
 
-
         repository = new InMemoryPartyRepository();
     }
 }
