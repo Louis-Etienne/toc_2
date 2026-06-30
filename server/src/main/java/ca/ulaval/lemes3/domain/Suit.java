@@ -1,8 +1,5 @@
 package ca.ulaval.lemes3.domain;
 
 public enum Suit {
-    HEART,
-    SPADE,
-    CLUB,
-    DIAMOND,
+    HEART, SPADE, CLUB, DIAMOND,
 }
