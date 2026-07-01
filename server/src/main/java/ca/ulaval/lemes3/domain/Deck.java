@@ -7,22 +7,12 @@ import java.util.List;
 public class Deck {
     private List<Card> cards;
 
-    public Deck() {
-        cards = new ArrayList<>();
-        resetDeck();
+    public Deck(List<Card> cards) {
+        this.cards = cards;
     }
 
     public void shuffleDeck() {
         Collections.shuffle(cards);
-    }
-
-    public void resetDeck() {
-        cards.clear();
-        for (Suit suit : Suit.values()) {
-            for (Rank rank : Rank.values()) {
-                cards.add(new Card(suit, rank));
-            }
-        }
     }
 
     public Card drawTopCard() {
