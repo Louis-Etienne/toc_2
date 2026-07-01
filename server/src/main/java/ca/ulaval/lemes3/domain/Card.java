@@ -1,4 +1,5 @@
 package ca.ulaval.lemes3.domain;
 
-public class Card {
+public record Card(Suit suit, Rank rank) {
+
 }
