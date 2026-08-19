@@ -9,4 +9,8 @@ public record MarbleDto(UUID id) {
     public Marble toDomain() {
         return new Marble(id);
     }
+
+    public MarbleDto (Marble marble) {
+        this(marble.getId());
+    }
 }

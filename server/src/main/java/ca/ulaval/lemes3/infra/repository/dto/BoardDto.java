@@ -14,4 +14,12 @@ public record BoardDto(UUID id, DeckDto deck, List<PlayerDto> players, List<Marb
         List<Player> playersDomain = players.stream().map(PlayerDto::toDomain).toList();
         return new Board(id, deck.toDomain(), playersDomain, marblesDomain );
     }
+
+    public BoardDto (Board board) {
+        this(board.getId(),
+                new DeckDto(board.getDeck()),
+                board.getPlayers().stream().map(PlayerDto::new).toList(),
+                board.getMarbles().stream().map(MarbleDto::new).toList()
+                );
+    }
 }

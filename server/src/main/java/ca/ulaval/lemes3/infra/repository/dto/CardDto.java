@@ -10,5 +10,9 @@ public record CardDto(Suit suit, Rank rank) {
         return new Card(suit, rank);
     }
 
+    public CardDto (Card card) {
+        this(card.suit(), card.rank());
+    }
+
 
 }

@@ -9,5 +9,10 @@ public record PlayerDto(UUID id) {
     public Player  toDomain() {
         return new Player(id);
     }
+
+    public PlayerDto (Player player) {
+        this(player.getId());
+    }
+
 }
 

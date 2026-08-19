@@ -13,5 +13,9 @@ public record DeckDto(List<CardDto> cards) {
         return new Deck(cardsDomain);
     }
 
+    public DeckDto (Deck deck) {
+        this(deck.getCards().stream().map(CardDto::new).toList());
+    }
+
 
 }

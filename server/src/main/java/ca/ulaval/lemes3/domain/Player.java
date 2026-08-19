@@ -8,4 +8,8 @@ public class Player {
     public Player(UUID id) {
         this.id = id;
     }
+
+    public UUID getId() {
+        return id;
+    }
 }

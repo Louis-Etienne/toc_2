@@ -16,4 +16,20 @@ public class Board {
         this.marbles = marbles;
         this.id = id;
     }
+
+    public Deck getDeck() {
+        return deck;
+    }
+
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    public List<Marble> getMarbles() {
+        return marbles;
+    }
+
+    public UUID getId() {
+        return id;
+    }
 }
