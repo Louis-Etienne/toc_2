@@ -20,6 +20,6 @@ public class MarbleDto {
     }
 
     public MarbleDto(Marble marble) {
-        this(marble.getId());
+        this.id = marble.getId();
     }
 }

@@ -20,7 +20,7 @@ public class PlayerDto {
     }
 
     public PlayerDto(Player player) {
-        this(player.getId());
+        this.id = player.getId();
     }
 
 }

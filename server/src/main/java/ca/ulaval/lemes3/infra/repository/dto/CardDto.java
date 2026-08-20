@@ -21,7 +21,8 @@ public class CardDto {
     }
 
     public CardDto(Card card) {
-        this(card.suit(), card.rank());
+        this.suit = card.suit();
+        this.rank = card.rank();
     }
 
 }

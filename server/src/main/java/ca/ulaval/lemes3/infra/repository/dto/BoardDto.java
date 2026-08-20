@@ -30,7 +30,9 @@ public class BoardDto {
     }
 
     public BoardDto(Board board) {
-        this(board.getId(), new DeckDto(board.getDeck()), board.getPlayers().stream().map(PlayerDto::new).toList(),
-                board.getMarbles().stream().map(MarbleDto::new).toList());
+        this.id = board.getId();
+        this.deck = new DeckDto(board.getDeck());
+        this.players = board.getPlayers().stream().map(PlayerDto::new).toList();
+        this.marbles = board.getMarbles().stream().map(MarbleDto::new).toList();
     }
 }

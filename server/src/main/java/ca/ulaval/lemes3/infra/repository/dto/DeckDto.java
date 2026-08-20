@@ -23,7 +23,7 @@ public class DeckDto {
     }
 
     public DeckDto(Deck deck) {
-        this(deck.getCards().stream().map(CardDto::new).toList());
+        this.cards = deck.getCards().stream().map(CardDto::new).toList();
     }
 
 }
