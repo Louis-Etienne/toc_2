@@ -27,4 +27,8 @@ public class Deck {
         return cards.size();
     }
 
+    public List<Card> getCards() {
+        return cards;
+    }
+
 }
