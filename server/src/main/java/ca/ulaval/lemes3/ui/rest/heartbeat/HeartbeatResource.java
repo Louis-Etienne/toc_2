@@ -5,7 +5,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.Response;
 
 @Path("")
-public class HearbeatResource {
+public class HeartbeatResource {
 
     @GET
     @Path("/heartbeat")

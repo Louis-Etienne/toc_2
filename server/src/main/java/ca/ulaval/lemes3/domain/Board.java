@@ -1,5 +1,7 @@
 package ca.ulaval.lemes3.domain;
 
+import ca.ulaval.lemes3.domain.actions.PlayActionMove;
+
 import java.util.List;
 import java.util.UUID;
 

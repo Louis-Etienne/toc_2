@@ -1,0 +1,12 @@
+{
+  "boardId": "123",
+  "playerId": "456",
+  "marbleId": "789",
+  "card": {
+    "suit": "HEART",
+    "rank": "FIVE"
+  },
+  "args": {
+    "type": "starter",
+  }
+}
