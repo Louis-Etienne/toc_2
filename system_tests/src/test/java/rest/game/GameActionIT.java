@@ -12,7 +12,7 @@
 //
 // @ExtendWith(ServerExtension.class)
 // public class GameActionIT {
-// private final String PATH_GAME_ACTION_REQUEST = "src/test/resources/rest/game/GameActionRequest.json";
+// private final String PATH_GAME_ACTION_REQUEST = "src/test/resources/rest/game/BoardAction.json";
 //
 // @Test
 // void given_whenPostGameAction_thenReturns200() throws IOException {
