@@ -14,7 +14,7 @@ public class Board {
     private final UUID id;
     private BoardLayout boardLayout;
 
-    public Board(UUID id, Deck deck, List<Player> players, List<Marble> marbles,  BoardLayout boardLayout) {
+    public Board(UUID id, Deck deck, List<Player> players, List<Marble> marbles, BoardLayout boardLayout) {
         this.deck = deck;
         this.players = players;
         this.marbles = marbles;
@@ -43,15 +43,15 @@ public class Board {
     }
 
     public void moveMarble(PlayerId playerID, MarbleId marbleID, int step) {
-        if(marbles.isEmpty()) {
+        if (marbles.isEmpty()) {
             throw new InvalidMoveException("No marbles on the board!");
         }
 
-        if(players.stream().noneMatch(player -> player.getId().equals(playerID))) {
+        if (players.stream().noneMatch(player -> player.getId().equals(playerID))) {
             throw new InvalidMoveException("Player " + playerID + " is not on the board!");
         }
 
-        if(marbles.stream().noneMatch(marble -> marble.getId().equals(marbleID))) {
+        if (marbles.stream().noneMatch(marble -> marble.getId().equals(marbleID))) {
             throw new InvalidMoveException("Marble " + marbleID + " is not on the board!");
         }
     }
