@@ -1,15 +1,17 @@
 package ca.ulaval.lemes3.domain;
 
+import ca.ulaval.lemes3.MarbleId;
+
 import java.util.UUID;
 
 public class Marble {
-    private final UUID id;
+    private final MarbleId id;
 
-    public Marble(UUID id) {
+    public Marble(MarbleId id) {
         this.id = id;
     }
 
-    public UUID getId() {
+    public MarbleId getId() {
         return id;
     }
 }

@@ -1,12 +1,14 @@
 package ca.ulaval.lemes3.domain.actions;
 
+import ca.ulaval.lemes3.MarbleId;
 import ca.ulaval.lemes3.domain.Board;
+import ca.ulaval.lemes3.domain.PlayerId;
 
 import java.util.UUID;
 
 public class PlayActionSplit extends PlayAction {
 
-    public PlayActionSplit(UUID playerID, UUID marbleID) {
+    public PlayActionSplit(PlayerId playerID, MarbleId marbleID) {
         super(playerID, marbleID);
     }
 

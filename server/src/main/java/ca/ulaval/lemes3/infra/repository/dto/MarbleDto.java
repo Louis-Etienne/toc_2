@@ -1,5 +1,6 @@
 package ca.ulaval.lemes3.infra.repository.dto;
 
+import ca.ulaval.lemes3.MarbleId;
 import ca.ulaval.lemes3.domain.Marble;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,10 +17,11 @@ public class MarbleDto {
     private UUID id;
 
     public Marble toDomain() {
-        return new Marble(id);
+        MarbleId marbleId = new MarbleId(id);
+        return new Marble(marbleId);
     }
 
     public MarbleDto(Marble marble) {
-        this.id = marble.getId();
+        this.id = marble.getId().id();
     }
 }
