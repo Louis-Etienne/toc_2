@@ -22,11 +22,12 @@ public class BoardDto {
     private DeckDto deck;
     private List<PlayerDto> players;
     private List<MarbleDto> marbles;
+    private BoardLayoutDto layout;
 
     public Board toDomain() {
         List<Marble> marblesDomain = marbles.stream().map(MarbleDto::toDomain).toList();
         List<Player> playersDomain = players.stream().map(PlayerDto::toDomain).toList();
-        return new Board(id, deck.toDomain(), playersDomain, marblesDomain);
+        return new Board(id, deck.toDomain(), playersDomain, marblesDomain, layout.toDomain());
     }
 
     public BoardDto(Board board) {
@@ -34,5 +35,6 @@ public class BoardDto {
         this.deck = new DeckDto(board.getDeck());
         this.players = board.getPlayers().stream().map(PlayerDto::new).toList();
         this.marbles = board.getMarbles().stream().map(MarbleDto::new).toList();
+        this.layout = new BoardLayoutDto(board.getBoardLayout());
     }
 }

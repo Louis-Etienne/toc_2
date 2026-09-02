@@ -1,5 +1,7 @@
 package ca.ulaval.lemes3.domain.actions;
 
+import ca.ulaval.lemes3.MarbleId;
+import ca.ulaval.lemes3.domain.PlayerId;
 import ca.ulaval.lemes3.domain.Rank;
 import ca.ulaval.lemes3.ui.rest.board.PlayRequest;
 
@@ -8,8 +10,8 @@ import java.util.UUID;
 public class PlayActionFactory {
 
     public PlayAction createPlayAction(PlayRequest playRequest) {
-        UUID pId = playRequest.playerId();
-        UUID mId = playRequest.marbleId();
+        PlayerId pId = new PlayerId(playRequest.playerId());
+        MarbleId mId = new MarbleId(playRequest.marbleId());
         return switch (playRequest.card().rank()) {
 
             case Rank.ONE -> isStarter(playRequest) ? new PlayActionStarter(pId, mId) : new PlayActionMove(pId, mId, 1);
