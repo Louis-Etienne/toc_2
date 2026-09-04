@@ -54,5 +54,29 @@ public class Board {
         if (marbles.stream().noneMatch(marble -> marble.getId().equals(marbleID))) {
             throw new InvalidMoveException("Marble " + marbleID + " is not on the board!");
         }
+
+        if (boardLayout.isHome(marbleID)) {
+            throw new InvalidMoveException("Marble " + marbleID + " is still in home!");
+        }
+
+        if (boardLayout.isInHeaven(marbleID)) {
+            moveInHeaven(playerID, marbleID, step);
+        }
+
     }
+
+    private void moveInHeaven(PlayerId playerId, MarbleId marbleId, int step) {
+        if (boardLayout.isHeavenMoveOutOfRange(playerId, marbleId, step)) {
+            throw new InvalidMoveException("Marble " + marbleId + " is out of range in heaven!");
+        }
+        if (boardLayout.isHeavenBlocked(playerId, marbleId, step)) {
+            throw new InvalidMoveException("Marble " + marbleId + " is blocked in heaven!");
+        }
+
+    }
+
+    private void moveInTrack(PlayerId playerID, MarbleId marbleID, int step) {
+
+    }
+
 }

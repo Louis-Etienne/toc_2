@@ -18,15 +18,14 @@ import java.util.stream.Collectors;
 public class BoardLayoutDto {
     private UUID[] track;
     private Map<UUID, List<UUID>> homes;
-    private Map<UUID, List<UUID>> heavens;
+    private Map<UUID, UUID[]> heavens;
 
     public BoardLayout toDomain() {
         MarbleId[] trackDomain = Arrays.stream(track).map(id -> id == null ? null : new MarbleId(id)).toArray(MarbleId[]::new);
         Map<PlayerId, List<MarbleId>> homesDomain = homes.entrySet().stream()
                 .collect(Collectors.toMap(entry -> new PlayerId(entry.getKey()), entry -> entry.getValue().stream().map(MarbleId::new).toList()));
-        Map<PlayerId, List<MarbleId>> heavensDomain = heavens.entrySet().stream()
-                .collect(Collectors.toMap(entry -> new PlayerId(entry.getKey()), entry -> entry.getValue().stream().map(MarbleId::new).toList()));
-
+        Map<PlayerId, MarbleId[]> heavensDomain = heavens.entrySet().stream().collect(Collectors.toMap(entry -> new PlayerId(entry.getKey()),
+                entry -> Arrays.stream(entry.getValue()).map(id -> id == null ? null : new MarbleId(id)).toArray(MarbleId[]::new)));
         return new BoardLayout(trackDomain, homesDomain, heavensDomain);
 
     }
@@ -38,6 +37,6 @@ public class BoardLayoutDto {
                 entry -> entry.getValue().stream().map(marbleId -> marbleId == null ? null : marbleId.id()).toList()));
 
         heavens = boardLayout.getHeavens().entrySet().stream().collect(Collectors.toMap(entry -> entry.getKey().id(),
-                entry -> entry.getValue().stream().map(marbleId -> marbleId == null ? null : marbleId.id()).toList()));
+                entry -> Arrays.stream(entry.getValue()).map(marbleId -> marbleId == null ? null : marbleId.id()).toArray(UUID[]::new)));
     }
 }
