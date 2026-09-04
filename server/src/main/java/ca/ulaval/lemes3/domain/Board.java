@@ -55,7 +55,7 @@ public class Board {
             throw new InvalidMoveException("Marble " + marbleID + " is not on the board!");
         }
 
-        if (boardLayout.isHome(marbleID)) {
+        if (boardLayout.isInHome(marbleID)) {
             throw new InvalidMoveException("Marble " + marbleID + " is still in home!");
         }
 

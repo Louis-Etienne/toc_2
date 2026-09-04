@@ -32,7 +32,7 @@ class BoardTest {
 
     @Test
     public void givenInvalidMarble_whenMoveMarble_thenThrow() {
-        Board board = BoardBuilder.aBoard().withPlayer(playerId).build();
+        Board board = BoardBuilder.aBoard().withPlayer(playerId).withMarble(marbleId).build();
 
         MarbleId invalidMarbleID = new MarbleId(UUID.randomUUID());
 
@@ -51,7 +51,6 @@ class BoardTest {
         Board board = BoardBuilder.aBoard().withHeavenSize(4).withPlayer(playerId).withMarbleInHeaven(playerId, marbleId, 3).build();
 
         assertThrows(InvalidMoveException.class, () -> board.moveMarble(playerId, marbleId, 5));
-
     }
 
     @Test

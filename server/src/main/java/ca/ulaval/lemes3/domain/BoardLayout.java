@@ -31,7 +31,7 @@ public class BoardLayout {
         return heavens;
     }
 
-    public boolean isHome(MarbleId marbleId) {
+    public boolean isInHome(MarbleId marbleId) {
         return homes.values().stream().anyMatch(marbleIds -> marbleIds.contains(marbleId));
     }
 
@@ -40,33 +40,33 @@ public class BoardLayout {
     }
 
     public boolean isHeavenMoveOutOfRange(PlayerId playerId, MarbleId marbleId, int step) {
-        MarbleId[] heaven = heavens.get(playerId);
-        for (int i = 0; i < heaven.length; i++) {
-            if (marbleId.equals(heaven[i])) {
-                return i + step >= heaven.length;
-            }
-        }
-        return true;
+        int currentIndex = getHeavenIndex(playerId, marbleId);
+        return currentIndex + step >= heavens.get(playerId).length;
     }
 
     public boolean isHeavenBlocked(PlayerId playerId, MarbleId marbleId, int step) {
+        int currentIndex = getHeavenIndex(playerId, marbleId);
+        MarbleId[] heaven = heavens.get(playerId);
+
+        for (int i = currentIndex + 1; i < currentIndex + step; i++) {
+            if (heaven[i] != null) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private int getHeavenIndex(PlayerId playerId, MarbleId marbleId) {
         MarbleId[] heaven = heavens.get(playerId);
 
         for (int i = 0; i < heaven.length; i++) {
 
             if (marbleId.equals(heaven[i])) {
-
-                int destinationIndex = i + step;
-
-                for (int j = i + 1; j < destinationIndex; j++) {
-                    if (heaven[j] != null) {
-                        return true;
-                    }
-
-                }
-                return false;
+                return i;
             }
         }
-        return true;
+        throw new IllegalArgumentException("Marble is not in heaven");
     }
+
 }
