@@ -1,7 +1,7 @@
 package ca.ulaval.lemes3.infra.repository;
 
 import ca.ulaval.lemes3.domain.Board;
-import ca.ulaval.lemes3.helper.BoardHelper;
+import ca.ulaval.lemes3.helper.BoardBuilder;
 import ca.ulaval.lemes3.infra.repository.dto.BoardDto;
 import org.dizitart.no2.mvstore.MVStoreModule;
 import org.junit.jupiter.api.Test;
@@ -31,7 +31,7 @@ class BoardRepositoryNoSqlTest {
         MVStoreModule store = MVStoreModule.withConfig().filePath(tempFile.toFile()).build();
         BoardRepositoryNoSql repository = new BoardRepositoryNoSql(store);
 
-        Board board = BoardHelper.createBasicBoard();
+        Board board = BoardBuilder.aBoard().build();
         repository.save(board);
         Board boardResult = repository.get(board.getId());
         BoardDto boardDto = new BoardDto(board);
